@@ -1,0 +1,16 @@
+{
+  "name": "meteo-app",
+  "version": "1.0.0",
+  "description": "une simple app meteo basé sur une api en vanilla javascript",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css"
+  },
+  "keywords": [
+    "meteo",
+    "weather"
+  ],
+  "author": "echcharif el idrissi ismail -> sherifcodeur",
+  "license": "ISC"
+}

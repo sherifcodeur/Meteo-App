@@ -1,0 +1,178 @@
+@import "reset";
+
+@import "variables";
+
+body {
+
+    background:linear-gradient(45deg,$gradient3,$gradient4) ;
+    height: 100vh;
+}
+
+header {
+
+    height: 100px;
+    background-color: $secondary-color;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom: white 1px solid;
+
+    h1 {
+
+
+        width: max-content;
+        height: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 30px;
+        color: $third-color;
+       
+
+
+    }
+}
+
+
+.wrapper {
+
+
+
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    background: linear-gradient(45deg,$gradient1 ,$gradient2);
+    border-radius: 15px;
+    
+}
+
+
+.meteo-jour {
+
+    display: flex;
+    flex-direction: row;
+    
+    //background: linear-gradient(45deg,$gradient3 ,$gradient4);
+
+    &--logo {
+
+
+        width: 50%;
+
+        img {
+
+            width: 100%;
+
+            //background-color: $third-color;
+        }
+    }
+
+    &--texte {
+
+
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 35px;
+        color: $fifth-color;
+
+        
+    }
+}
+
+footer {
+
+    //background-color: $fifth-color;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    height: 175px;
+
+    .bloc-meteo {
+
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        gap: 2px;
+       // background-color: $fifth-color;
+      
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-color: $fifth-color;
+        &--time {
+
+
+            height: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            
+            background-color: $fourth-color;
+
+
+            &--lheure {
+
+                font-size: 20px;
+
+
+                height: 25px;
+                text-align: center;
+
+                &.dark {
+
+                    color: $top-text;
+
+                }
+
+                &.light {
+
+                    color: $bottom-text;
+                }
+
+
+
+            }
+        }
+
+        &--day {
+
+            //background-color: $fourth-color;
+            height: 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: $fourth-color;
+
+            &--lejour {
+
+                font-size: 20px;
+                height: 25px;
+                text-align: center;
+                
+
+
+                &.dark {
+
+                    color:$top-text;
+
+                }
+
+                &.light {
+
+                    color: $bottom-text;
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+
+
+
+}
