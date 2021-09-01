@@ -7,6 +7,9 @@ const descriptionTemps = document.getElementById("meteo-jour--texte--description
 const temperature = document.getElementById("meteo-jour--texte--temperature");
 const timezoneformeteo = document.getElementById("meteo-jour--texte--timezone");
 
+const divheuredark = document.querySelectorAll('.bloc-meteo--time--lheure.dark');
+const divheurelight = document.querySelectorAll('.bloc-meteo--time--lheure.light');
+
 const imageweather = document.getElementById("logo");
 
 
@@ -58,14 +61,33 @@ function fetchAPI(latitude,longitude){
             dayornight = "nuit";
         }
 
-        imageweather.innerHTML = `<img src="/resources/${dayornight}/${data.current.weather[0].icon}.svg" alt="image de la meteo du jour"></img>`
+        imageweather.innerHTML = `<img src="/resources/${dayornight}/${data.current.weather[0].icon}.svg" alt="image de la meteo du jour"></img>`;
 
         
 
         
 
-        futurHours();
+        let thehour = 0 ;   
 
+        for(let i = 0 ; i < 7 ; i++){
+    
+            thehour +=3;
+    
+            if(currentTime + thehour >= 24 ){
+    
+                currentTime -= 24 ;
+            }
+
+           divheuredark[i].innerText = `${currentTime + thehour}  h` ;
+           divheurelight[i].innerText = `${Math.floor(data.hourly[thehour].temp)}°C` ;
+        }
+
+
+        
+       
+
+
+       
         
 
 
@@ -73,13 +95,5 @@ function fetchAPI(latitude,longitude){
 
 }
 
-function futurHours(){
-
-    for(i=0;i<21;i+=3){
-
-        console.log("hours",i);
-    }
-
-}
 
 
