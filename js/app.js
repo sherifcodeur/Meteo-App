@@ -1,4 +1,9 @@
 
+import { capitalize,daysInOrder } from "./utilitaires/gestionTemps.js";
+
+
+
+//console.log("jours en ordres",daysInOrder);
 
 const API = '2512f75f39d80de37ff31d19c7bd8fd5' ;
 let currentTime = new Date().getHours();
@@ -9,6 +14,11 @@ const timezoneformeteo = document.getElementById("meteo-jour--texte--timezone");
 
 const divheuredark = document.querySelectorAll('.bloc-meteo--time--lheure.dark');
 const divheurelight = document.querySelectorAll('.bloc-meteo--time--lheure.light');
+
+const divdaydark = document.querySelectorAll('.bloc-meteo--day--lejour.dark');
+const divdaylight = document.querySelectorAll('.bloc-meteo--day--lejour.light');
+
+const leloader = document.getElementById("loader");
 
 const imageweather = document.getElementById("logo");
 
@@ -21,7 +31,7 @@ navigator.geolocation.getCurrentPosition(response=>{
 
         let long = response.coords.longitude;
 
-       console.log(lat,long);
+       //console.log(lat,long);
 
        fetchAPI(lat,long);
 
@@ -31,6 +41,9 @@ navigator.geolocation.getCurrentPosition(response=>{
 
     let lat = 48.8566;
     let long = 2.3522;
+
+    fetchAPI(lat,long);
+
     showMessage();
 
 });
@@ -47,7 +60,7 @@ function fetchAPI(latitude,longitude){
 
         console.log(data);
 
-        descriptionTemps.innerText = data.current.weather[0].description;
+        descriptionTemps.innerText = capitalize(data.current.weather[0].description);
 
         temperature.innerText = `${Math.floor(data.current.temp)} ° C`  ;
 
@@ -83,16 +96,30 @@ function fetchAPI(latitude,longitude){
         }
 
 
-        
+        console.log(divdaydark);
        
+        for(let i =0 ; i<7 ;i++){
 
+            divdaydark[i].innerText = daysInOrder[i].slice(0,3);
 
-       
+            divdaylight[i].innerText = `${Math.floor(data.daily[i].temp.day)}°C`;
+
+        }
+
+       leloader.classList.add("disappear");
         
 
 
     }).catch();
 
+}
+
+
+function showMessage(){
+
+    let lemessage = "vous n'avez pas permis la Géolocalisation , Voici donc la Météo de Paris";
+
+    document.getElementById("error").innerText = lemessage;
 }
 
 
